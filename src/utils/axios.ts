@@ -1,27 +1,28 @@
 import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
+import router from "@/router";
 
-const service = axios.create();
 
-// Request interceptors
-service.interceptors.request.use(
-    (config: AxiosRequestConfig) => {
-        // do something
-        return config;
+// 创建 Axios 实例，配置基地址
+const httpInstance = axios.create({
+    baseURL: "http://pcapi-xiaotuxian-front-devtest.itheima.net",
+    timeout: 5000,
+});
+
+// axios 请求拦截器，在请求被 then 或 catch 处理前拦截它们。
+httpInstance.interceptors.request.use(
+    (config) => {
+        //...
     },
-    (error: any) => {
-        Promise.reject(error);
+    (error) => Promise.reject(error)
+);
+
+
+// axios 响应式拦截器
+httpInstance.interceptors.response.use(
+    (res) => res.data,
+    (e) => {
+        //...
     }
 );
 
-// Response interceptors
-service.interceptors.response.use(
-    async (response: AxiosResponse) => {
-        // do something
-    },
-    (error: any) => {
-        // do something
-        return Promise.reject(error);
-    }
-);
-
-export default service;
+export default httpInstance;
