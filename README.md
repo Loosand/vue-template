@@ -11,7 +11,7 @@
 
 ```bash
 bash
-复制代码# pnpm
+# pnpm
 pnpm create vite
 
 # npm
@@ -25,14 +25,14 @@ yarn create vite
 
 ```bash
 bash
-复制代码? Project name:  vite-vue3-ts-pinia
+? Project name:  vite-vue3-ts-pinia
 ```
 
 1. 选择一个框架（vue）
 
 ```bash
 bash
-复制代码? Select a framework: » - Use arrow-keys. Return to submit.
+? Select a framework: » - Use arrow-keys. Return to submit.
      vanilla // 原生js
  >   vue     // 默认就是 vue3
      react   // react
@@ -45,7 +45,7 @@ bash
 
 ```vbnet
 vbnet
-复制代码? Select a variant: › - Use arrow-keys. Return to submit.
+? Select a variant: › - Use arrow-keys. Return to submit.
      vue
  ❯   vue-ts
 ```
@@ -54,14 +54,14 @@ vbnet
 
 ```bash
 bash
-复制代码cd vite-vue3-ts-pinia && pnpm install && pnpm run dev
+cd vite-vue3-ts-pinia && pnpm install && pnpm run dev
 ```
 
 ## 快速初始化（建议使用）：
 
 ```arduino
 arduino
-复制代码# pnpm
+# pnpm
 pnpm create vite project-name -- --template vue-ts
 
 # npm 6.x
@@ -80,14 +80,14 @@ yarn create vite project-name --template vue-ts
 
 ```bash
 bash
-复制代码pnpm i @types/node --save-dev
+pnpm i @types/node --save-dev
 ```
 
 1. 修改 `tsconfig.json`
 
 ```json
 json
-复制代码{
+{
   "compilerOptions": {
     "typeRoots": [
       "node_modules/@types", // 默认值
@@ -117,7 +117,7 @@ json
 
 ```typescript
 typescript
-复制代码import { defineConfig } from 'vite';
+import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import * as path from 'path';
 
@@ -156,28 +156,28 @@ export default defineConfig({
 
 ```bash
 bash
-复制代码pnpm i eslint eslint-plugin-vue --save-dev
+pnpm i eslint eslint-plugin-vue --save-dev
 ```
 
 由于 ESLint 默认使用 [Espree](https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Feslint%2Fespree) 进行语法解析，无法识别 TypeScript 的一些语法，故我们需要安装 [`@typescript-eslint/parser`](https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Ftypescript-eslint%2Ftypescript-eslint%2Ftree%2Fmaster%2Fpackages%2Fparser) 替代掉默认的解析器
 
 ```bash
 bash
-复制代码pnpm install @typescript-eslint/parser --save-dev
+pnpm install @typescript-eslint/parser --save-dev
 ```
 
 安装对应的插件 [@typescript-eslint/eslint-plugin](https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Ftypescript-eslint%2Ftypescript-eslint%2Ftree%2Fmaster%2Fpackages%2Feslint-plugin) 它作为 eslint 默认规则的补充，提供了一些额外的适用于 ts 语法的规则。
 
 ```bash
 bash
-复制代码pnpm install @typescript-eslint/eslint-plugin --save-dev
+pnpm install @typescript-eslint/eslint-plugin --save-dev
 ```
 
 1. 创建配置文件： `.eslintrc.js` 或 `.eslintrc.json`
 
 ```javascript
 javascript
-复制代码module.exports = {
+module.exports = {
     parser: 'vue-eslint-parser',
 
     parserOptions: {
@@ -204,7 +204,7 @@ javascript
 
 ```diff
 diff
-复制代码node_modules/
+node_modules/
 dist/
 index.html
 ```
@@ -213,7 +213,7 @@ index.html
 
 ```json
 json
-复制代码{
+{
     ...
     "scripts": {
         ...
@@ -230,14 +230,14 @@ json
 
 ```bash
 bash
-复制代码pnpm i prettier eslint-config-prettier eslint-plugin-prettier --save-dev
+pnpm i prettier eslint-config-prettier eslint-plugin-prettier --save-dev
 ```
 
 1. 创建配置文件： `prettier.config.js` 或 `.prettierrc.js`
 
 ```javascript
 javascript
-复制代码module.exports = {
+module.exports = {
     // 一行最多 80 字符
     printWidth: 80,
     // 使用 4 个空格缩进
@@ -280,7 +280,7 @@ javascript
 
 ```javascript
 javascript
-复制代码module.exports = {
+module.exports = {
     ...
 
     extends: [
@@ -298,7 +298,7 @@ javascript
 
 ```json
 json
-复制代码{
+{
     ...
     "scripts": {
         ...
@@ -326,7 +326,7 @@ json
 
 ```css
 css
-复制代码 pnpm i pinia --save
+ pnpm i pinia --save
 ```
 
 ## 使用
@@ -335,7 +335,7 @@ css
 
 ```typescript
 typescript
-复制代码 import { createPinia } from 'pinia'
+ import { createPinia } from 'pinia'
 
  const store = createPinia()
 
@@ -346,7 +346,7 @@ typescript
 
 ```typescript
 typescript
-复制代码 import { createApp } from 'vue'
+ import { createApp } from 'vue'
  import App from './App.vue'
  import store from './store'
  
@@ -364,7 +364,7 @@ typescript
 
 ```typescript
 typescript
-复制代码 import { defineStore } from 'pinia'
+ import { defineStore } from 'pinia'
 
  export const useUserStore = defineStore({
    id: 'user', // id必填，且需要唯一
@@ -385,7 +385,7 @@ typescript
 
 ```typescript
 typescript
-复制代码 <template>
+ <template>
    <div>{{ userStore.name }}</div>
  </template>
 
@@ -400,7 +400,7 @@ typescript
 
 ```typescript
 typescript
-复制代码 // 1. 直接修改 state （不建议）
+ // 1. 直接修改 state （不建议）
  userStore.name = '李四'
 
  // 2. 通过 actions 去修改
@@ -420,7 +420,7 @@ typescript
 
 ```bash
 bash
-复制代码 pnpm i vue-router --save
+ pnpm i vue-router --save
 ```
 
 ## 使用
@@ -429,7 +429,7 @@ bash
 
 ```typescript
 typescript
-复制代码 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 
  const routes: Array<RouteRecordRaw> = [
    {
@@ -465,7 +465,7 @@ typescript
 
 ```typescript
 typescript
-复制代码 import { createApp } from 'vue'
+ import { createApp } from 'vue'
  import App from './App.vue'
  import store from './store'
  import router from '@/router';
@@ -483,7 +483,7 @@ typescript
 
 ```typescript
 typescript
-复制代码 <template>
+ <template>
    <RouterView/>
  </template>
 ```
@@ -496,7 +496,7 @@ typescript
 
 ```css
 css
-复制代码 pnpm i @vueuse/core
+ pnpm i @vueuse/core
 ```
 
 ## 使用
@@ -505,7 +505,7 @@ css
 
 ```typescript
 typescript
-复制代码 <template>
+ <template>
    <h1> 测试 vueUse 的鼠标坐标 </h1>
    <h3>Mouse: {{x}} x {{y}}</h3>
  </template>
@@ -541,7 +541,7 @@ useMouse 只是 vueuse 的一个最基本的函数库，还有许多，总会有
 
 ```css
 css
-复制代码 :root {
+ :root {
    --main-bg-color: pink;
  }
  
@@ -558,7 +558,7 @@ css
 
 ```bash
 bash
-复制代码 # .scss and .sass
+ # .scss and .sass
  pnpm add -D sass
 
  # .less
@@ -569,7 +569,7 @@ bash
 
 ```typescript
 typescript
-复制代码// .scss
+// .scss
  <template>
      <div class="root">
          <h3>欢迎使用 scss</h3>
@@ -598,7 +598,7 @@ typescript
 
 ```bash
 bash
-复制代码 pnpm i axios
+ pnpm i axios
 ```
 
 ## 使用：
@@ -607,7 +607,7 @@ bash
 
 ```typescript
 typescript
-复制代码 import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
+ import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
 
  const service = axios.create();
 
@@ -640,7 +640,7 @@ typescript
 
 ```typescript
 typescript
-复制代码<script lang="ts">
+<script lang="ts">
     import request from '@/utils/axios';
     const requestRes = async () => {
         let result = await request({
@@ -658,7 +658,7 @@ typescript
 
 ```typescript
 typescript
-复制代码import * as login from './module/login';
+import * as login from './module/login';
 import * as index from './module/index';
 
 export default Object.assign({}, login, index);
@@ -668,7 +668,7 @@ export default Object.assign({}, login, index);
 
 ```typescript
 typescript
-复制代码import request from '@/utils/axios';
+import request from '@/utils/axios';
 
 /**
  * 登录
@@ -700,7 +700,7 @@ export const login = (username: string, password: string) => {
 
 ```typescript
 typescript
-复制代码import { AxiosRequestConfig } from 'axios';
+import { AxiosRequestConfig } from 'axios';
 /**
  * 自定义扩展axios模块
  * @author Maybe
@@ -723,7 +723,7 @@ declare module 'axios' {
 
 ```typescript
 typescript
-复制代码<script lang="ts">
+<script lang="ts">
     import API from '@/api';
     
     const requestRes = async () => {
@@ -743,14 +743,14 @@ typescript
 
 ```bash
 bash
-复制代码pnpm i vite-plugin-style-import --save-dev
+pnpm i vite-plugin-style-import --save-dev
 ```
 
 1. 修改 `vite.config.ts`
 
 ```typescript
 typescript
-复制代码...
+...
 import {
   createStyleImportPlugin,
   ElementPlusResolve,
@@ -793,14 +793,14 @@ export default defineConfig({
 
 ```bash
 bash
-复制代码pnpm install -D commitizen cz-conventional-changelog @commitlint/config-conventional @commitlint/cli commitlint-config-cz cz-customizable
+pnpm install -D commitizen cz-conventional-changelog @commitlint/config-conventional @commitlint/cli commitlint-config-cz cz-customizable
 ```
 
 1. 配置 `package.json`
 
 ```json
 json
-复制代码{
+{
   ...
   "scripts": {
     "commit:comment": "引导设置规范化的提交信息",
@@ -820,7 +820,7 @@ json
 
 ```javascript
 javascript
-复制代码module.exports = {
+module.exports = {
     extends: ['@commitlint/config-conventional', 'cz'],
     rules: {
         'type-enum': [
@@ -869,7 +869,7 @@ javascript
 
 ```javascript
 javascript
-复制代码module.exports = {
+module.exports = {
     types: [
         {value: 'feature',  name: 'feature:  增加新功能'},
         {value: 'bug',      name: 'bug:      测试反馈bug列表中的bug号'},
@@ -918,7 +918,7 @@ javascript
 
 ```bash
 bash
-复制代码# 1.安装
+# 1.安装
 pnpm i husky lint-staged -D
 
 # 2.生成 .husky 的文件夹
@@ -937,7 +937,7 @@ npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
 
 ```json
 json
-复制代码{
+{
   ...
   "lint-staged": {
     	"*.{js,ts}": [
